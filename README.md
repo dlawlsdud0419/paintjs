@@ -28,3 +28,5 @@ function handleResetClick(event){
     range.value = 5;
 
 }
+
+<a href="https://dlawlsdud0419.github.io/paintjs/">실행</a>
