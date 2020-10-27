@@ -93,11 +93,11 @@ function handleCM(event){
 
 //이미지 저장
 function handleSaveClick(event){
-    /*const img = canvas.toDataURL();
+    const img = canvas.toDataURL();
     const link = document.createElement("a");
     link.href = img;
     link.download = "PaingJS[EXPORT]";
-    link.click();*/
+    link.click();
 
 }
 
