@@ -86,6 +86,7 @@ function handleCanvasClick(){
     }
 }
 
+
 //우클릭 방지
 function handleCM(event){
     event.preventDefault();
