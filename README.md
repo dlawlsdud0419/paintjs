@@ -14,8 +14,8 @@ function handleResetClick(event){
     ctx.fillRect(0,0, CANVAS_SIZE,CANVAS_SIZE);
     painting = false;
     filling = false;
-    ctx.strokeStyle = "#INITIAL_COLOR";
-    ctx.fillStyle ="INITIAL_COLOR";
+    ctx.strokeStyle = INITIAL_COLOR;
+    ctx.fillStyle = INITIAL_COLOR;
     ctx.lineWidth = 2.5;
     mode.innerText = "Fill";
     range.value = 5;
