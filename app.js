@@ -93,11 +93,13 @@ function handleCM(event){
 
 //이미지 저장
 function handleSaveClick(event){
-    const img = canvas.toDataURL();
-    const link = document.createElement("a");
-    link.href = img;
-    link.download = "PaingJS[EXPORT]";
-    link.click();
+    if (confirm("그림을 다운로드 하시겠습니까?") == true){    //확인
+        const img = canvas.toDataURL();
+        const link = document.createElement("a");
+        link.href = img;
+        link.download = "PaingJS[EXPORT]";
+        link.click();
+    }
 
 }
 
@@ -119,11 +121,15 @@ function handleResetClick(event){
 //이벤트 발생
 if (canvas) {
     canvas.addEventListener("mousemove", onMouseMove);
-    canvas.addEventListener("mousedown", startPainting)
+    canvas.addEventListener("touchmove", onMouseMove);
+    canvas.addEventListener("mousedown", startPainting);
+    canvas.addEventListener("touchstart", startPainting);
     canvas.addEventListener("mouseup", stopPainting);
+    canvas.addEventListener("touchend", stopPainting);
     canvas.addEventListener("mouseleave", stopPainting);
     canvas.addEventListener("click", handleCanvasClick);
     canvas.addEventListener("contextmenu", handleCM);
+    canvas.addEventListener("touchcancel",stopPainting);
 }
 
 //굵기 바 값 함수 실행
@@ -138,7 +144,7 @@ if(mode){
 
 //이미지 저장 함수 실행
 if(save){
-    save.addEventListener("click", handleSaveClick);
+        save.addEventListener("click", handleSaveClick);
 }
 
 if(reset){
