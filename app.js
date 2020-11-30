@@ -14,17 +14,12 @@ canvas.height = CANVAS_SIZE;
 
 ctx.fillStyle = "#ffffff";
 ctx.fillRect(0,0, CANVAS_SIZE,CANVAS_SIZE);
-ctx.strokeStyle = "#INITIAL_COLOR";
-ctx.fillStyle ="INITIAL_COLOR";
+ctx.strokeStyle = INITIAL_COLOR;
+ctx.fillStyle = INITIAL_COLOR;
 ctx.lineWidth = 2.5;
-
 
 let painting = false;
 let filling = false;
-
-
-//배열에 있는 색 값 추출
-Array.from(colors).forEach(color => color.addEventListener("click", handleColorClick))
 
 
 
@@ -33,7 +28,6 @@ function stopPainting(){
     painting = false;
 }
 
-//드래그 시작
 function startPainting(){
     painting = true;
 }
@@ -63,26 +57,24 @@ function handleColorClick(event){
 //굵기 설정
 function handleRangeChange(event){
     const size = event.target.value;
-    ctx.lineWidth= size;
+    ctx.lineWidth = size;
 }
 
 // 펜모드, 채색모드 설정
-function handleModeClick(event){
-    if(filling == true){
+function handleModeClick(){
+    if(filling === true){
         filling = false;
-        mode.innerText = "Fill"
-    } else {
+        mode.innerText = "Fill";
+    }else{
         filling = true;
         mode.innerText = "Paint";
-        console.log(filling);
     }
 }
 
 //캔버스 색 전체 채우기
 function handleCanvasClick(){
     if(filling){
-        ctx.fillStyle = ctx.strokeStyle;
-        ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
     }
 }
 
@@ -97,7 +89,7 @@ function handleSaveClick(event){
         const img = canvas.toDataURL();
         const link = document.createElement("a");
         link.href = img;
-        link.download = "PaingJS[EXPORT]";
+        link.download = "PaingJS[🎨]";
         link.click();
     }
 
@@ -116,25 +108,18 @@ function handleResetClick(event){
 
 }
 
-function mtouch(){
-    console.log(event.clientX);
-}
-
-
 //이벤트 발생
 if (canvas) {
-    canvas.addEventListener("touchstart", mtouch);
     canvas.addEventListener("mousemove", onMouseMove);
-    canvas.addEventListener("touchmove", onMouseMove);
     canvas.addEventListener("mousedown", startPainting);
-    canvas.addEventListener("touchstart", startPainting);
     canvas.addEventListener("mouseup", stopPainting);
-    canvas.addEventListener("touchend", stopPainting);
     canvas.addEventListener("mouseleave", stopPainting);
     canvas.addEventListener("click", handleCanvasClick);
-    canvas.addEventListener("contextmenu", handleCM);
-    canvas.addEventListener("touchcancel",stopPainting);
 }
+//배열에 있는 색 값 추출
+Array.from(colors).forEach(
+    color => color.addEventListener("click", handleColorClick)
+);
 
 //굵기 바 값 함수 실행
 if(range){
@@ -148,7 +133,7 @@ if(mode){
 
 //이미지 저장 함수 실행
 if(save){
-        save.addEventListener("click", handleSaveClick);
+    save.addEventListener("click", handleSaveClick);
 }
 
 if(reset){
