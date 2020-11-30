@@ -34,4 +34,4 @@ function handleResetClick(event){
 }
 ````
 
->> <a href="https://dlawlsdud0419.github.io/paintjs/">실행</a>
+ <a href="https://dlawlsdud0419.github.io/paintjs/">실행</a>
