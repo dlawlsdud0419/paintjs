@@ -116,10 +116,14 @@ function handleResetClick(event){
 
 }
 
+function mtouch(){
+    console.log(event.clientX);
+}
 
 
 //이벤트 발생
 if (canvas) {
+    canvas.addEventListener("touchstart", mtouch);
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("touchmove", onMouseMove);
     canvas.addEventListener("mousedown", startPainting);
